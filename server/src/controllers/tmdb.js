@@ -19,3 +19,29 @@ export const tmdbMovieObject = async (req, res) => {}
 // ... what else?
 
 // For performance do I want to paginate the results / available options?
+
+// Helper Methods //
+
+// CRUD Operations //
+// Will want to move this to a data methods file / class
+const getData = async (resourcePath, options) => {
+    try {
+        const response = await fetch(resourcePath);
+        if (!response.ok) {
+            throw new Error("Error requesting data");
+        };
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.log(`${error.name}: ${error.message}`);
+        // Will I want to return an error here?
+        return { error: error, errorMessage: error.message, status: response.status };
+    }
+};
+
+const postData = async(resourcePath, body, options) => {};
+
+const putData = async(resourcePath, body, options) => {};
+
+const deleteData = async(resourcePath, body, options) => {};
