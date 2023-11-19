@@ -1,4 +1,4 @@
-import { tmbdApiKeyEnvironmentVariable } from '../settings';
+import { tmdbApiKeyEnvironmentVariable } from '../settings';
 // Need to figure out how to cache my calls to TMDB
 // Only should call index / each category page once per 24 hour period -> no more than every 12 hours
 // Maybe I make the call and cache it on a schedule and don't even have it as triggered by users
