@@ -49,8 +49,8 @@ const serializeMovieRecord = (data) => {
 // CRUD Operations //
 // Will want to move this to a data methods file / class
 const getData = async (resourcePath, options) => {
+    const response = await fetch(resourcePath);
     try {
-        const response = await fetch(resourcePath);
         if (!response.ok) {
             throw new Error("Error requesting data");
         };
