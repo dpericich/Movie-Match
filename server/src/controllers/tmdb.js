@@ -9,7 +9,10 @@ export const tmdbTopMovies = async (req, res) => {
     res.status(200).json({ data: serializedMovieRecord });
 };
 
-export const tmdbCategoryObject = async (req, res) => {}
+export const tmdbGenreList = async (req, res) => {
+    const genres = await getData(`https://api.themoviedb.org/3/genre/movie/list?language=en&api_key=${tmdbApiKeyEnvironmentVariable}`);
+    res.status(200).json({ data: genres });
+}
 
 export const tmdbMovieObject = async (req, res) => {}
 
