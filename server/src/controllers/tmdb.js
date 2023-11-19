@@ -14,7 +14,12 @@ export const tmdbGenreList = async (req, res) => {
     res.status(200).json({ data: genres });
 }
 
-export const tmdbMovieObject = async (req, res) => {}
+export const tmdbMovieObject = async (req, res) => {
+    const movieId = req.params["movieId"];
+    const movieData = await getData(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${tmdbApiKeyEnvironmentVariable}`);
+    const serializedMovieRecord = serializeMovieRecord(movieData);
+    res.status(200).json({ data: serializedMovieRecord });
+}
 
 // What are some of the other the routes I will need for this?
 // 1) Get all movies
