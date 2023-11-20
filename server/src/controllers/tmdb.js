@@ -43,6 +43,10 @@ const serializeMovieRecord = (data) => {
         genreReadable: data["genres"]?.length ?  data["genres"][0]["name"] : "",
         genreId: data["genres"]?.length ? data["genres"][0]["id"] : ""
     }
+};
+
+const serializeMovieCollection = (data) => {
+    return data.map(record => serializeMovieRecord(record));
 }
 
 
