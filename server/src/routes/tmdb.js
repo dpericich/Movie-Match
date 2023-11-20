@@ -4,7 +4,7 @@ const tmdbRouter = express.Router();
 
 tmdbRouter.get('/top-movies/:page?', tmdbTopMovies);
 tmdbRouter.get('/genres', tmdbGenreList);
-tmdbRouter.get('/movie/:movieId', tmdbMovieObject);
+tmdbRouter.get('/movies/:movieId', tmdbMovieObject);
 tmdbRouter.get('/genres/:genreName/:page?', tmdbGenreMovies);
 
 export default tmdbRouter;
