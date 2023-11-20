@@ -14,6 +14,14 @@ export const tmdbGenreList = async (req, res) => {
     res.status(200).json({ data: genres });
 }
 
+export const tmdbGenreMovies = async (req,res) => {
+    const requestedPage = req.params["page"] || 1;
+    const genreName = req.params["genreName"];
+    const {page, results} = await getData(`https://api.themoviedb.org/3/discover/movie?with_genres=${genreName}&page=${requestedPage}&api_key=${tmdbApiKeyEnvironmentVariable}`);
+    const serializedMovieCollection = serializeMovieCollection(results);
+    res.status(200).json({ data: serializedMovieCollection, page: page });
+}
+
 export const tmdbMovieObject = async (req, res) => {
     const movieId = req.params["movieId"];
     const movieData = await getData(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${tmdbApiKeyEnvironmentVariable}`);
