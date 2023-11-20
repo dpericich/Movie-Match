@@ -40,8 +40,8 @@ const serializeMovieRecord = (data) => {
         releaseDate: data["release_date"],
         posterPath: data["poster_path"],
         movidId: data["id"],
-        genreReadable: data["genres"][0]["name"],
-        genreId: data["genres"][0]["id"]
+        genreReadable: data["genres"]?.length ?  data["genres"][0]["name"] : "",
+        genreId: data["genres"]?.length ? data["genres"][0]["id"] : ""
     }
 }
 
