@@ -2,11 +2,12 @@ import { tmdbApiKeyEnvironmentVariable } from '../settings';
 // Need to figure out how to cache my calls to TMDB
 // Only should call index / each category page once per 24 hour period -> no more than every 12 hours
 // Maybe I make the call and cache it on a schedule and don't even have it as triggered by users
+
 export const tmdbTopMovies = async (req, res) => {
-    // Change this to the top ten moviese
-    const tmdbData = await getData(`https://api.themoviedb.org/3/movie/550?api_key=${tmbdApiKeyEnvironmentVariable}`);
-    const serializedMovieRecord = serializeMovieRecord(tmdbData)
-    res.status(200).json({ data: serializedMovieRecord });
+    const requestedPage = req.params["page"] || 1
+    const {page, results} = await getData(`https://api.themoviedb.org/3/movie/top_rated?page=${requestedPage}&api_key=${tmdbApiKeyEnvironmentVariable}`);
+    const serializedMovieRecords = serializeMovieCollection(results)
+    res.status(200).json({ data: serializedMovieRecords, page: page});
 };
 
 export const tmdbGenreList = async (req, res) => {
