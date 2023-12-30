@@ -1,3 +1,4 @@
+const fetch = require("node-fetch");
 import { tmdbApiKeyEnvironmentVariable } from '../settings';
 // Need to figure out how to cache my calls to TMDB
 // Only should call index / each category page once per 24 hour period -> no more than every 12 hours
@@ -62,6 +63,7 @@ const serializeMovieCollection = (data) => {
 // CRUD Operations //
 // Will want to move this to a data methods file / class
 const getData = async (resourcePath, options) => {
+    console.log(resourcePath)
     const response = await fetch(resourcePath);
     try {
         if (!response.ok) {
