@@ -2,8 +2,10 @@
 // https://node-postgres.com/apis/client
 // https://node-postgres.com/guides/project-structure
 
-import { Pool } from 'pg';
-import { postgresUser, postgresPassword, postgresDatabaseName } from '../settings';
+// import { Pool } from 'pg';
+import pkg from 'pg';
+const { Pool } = pkg;
+import { postgresUser, postgresPassword, postgresDatabaseName } from '../settings.js';
 
 const pool = new Pool({
     user: postgresUser,
